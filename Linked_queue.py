@@ -61,9 +61,9 @@ class Linked_queue:
                 listCount += 1
             return listCount
 
-    # returns the first element in the queue list - not completed
+    # returns the first element in the queue list - not tested
     def front(self):
-        pass
+        return self.linkedList.list[self.ifront]
 
     # swaps all of the member variables with the list in the argument - not completed
     def swap(self, Linked_queue):
@@ -138,7 +138,7 @@ class List_Node:
         self.listSize = 0
         self.next = None
 
-# just some simply testing for the push function
+# just some simple testing for the push function and front function
 myQueue = Linked_queue()
 
 myQueue.push(1)
@@ -150,5 +150,5 @@ myQueue.push(6)
 myQueue.push(7)
 myQueue.push(8)
 myQueue.push(9)
-
 myQueue.printList()
+print(myQueue.front())
