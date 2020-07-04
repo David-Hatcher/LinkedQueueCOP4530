@@ -1,0 +1,7 @@
+this is what i think the programs output should resemble.
+I was thinking of making a requirements list about the code but I feel like that is already explained in the PDF.
+and if anything the programers would probably do it better and faster.
+but I will do that if you guys want me to.
+I think this covers every case.
+please feel free to tell me if i missed something or if i made a mistake. 
+
