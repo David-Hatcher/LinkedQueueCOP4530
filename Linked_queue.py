@@ -39,29 +39,46 @@ class Linked_queue:
 
     # copy constructor and destructors don't exist in python
     
-    # returns true if the queue is empty, or false if it is not - not tested
+    # returns true if the queue is empty, or false if it is not
+
+    #############     TESTING COMMENTS    ##################
+    # Tested on 7/4/2020 working properly. - D Hatcher
     def empty(self):
         if self.size == 0:
             return True
         else:
             return False
     
-    # returns the size of the queue - not tested
-    def size(self):
+    # returns the size of the queue
+
+    #############     TESTING COMMENTS    ##################
+    # Testing Notes: I had to change the name of this function in order to be able to call it as 
+    # Python does not like having a function and member variable with the same names
+    # Tested on 7/4/2020, working properly. - D Hatcher
+    def getSize(self):
         return self.size
 
-    # returns the number of nodes in the linked list - not tested
+    # returns the number of nodes in the linked list
+
+    #############     TESTING COMMENTS    ##################
+    # Tesed on 7/4/2020, working properly after a few changes
+    # changed tempNode = self.linkedList.next -> tempNode = self.linkedList
+    # added tempNode = tempNode.next during the while loop
     def list_size(self):
         if self.linkedList == None:
             return 0
         else:
-            tempNode = self.linkedList.next
+            tempNode = self.linkedList
             listCount = 1
             while tempNode.next != None:
+                tempNode = tempNode.next
                 listCount += 1
             return listCount
 
-    # returns the first element in the queue list - not tested
+    # returns the first element in the queue list
+
+    #############     TESTING COMMENTS    ##################
+    # Tested on 7/4/2020, working properly. D Hatcher
     def front(self):
         return self.linkedList.list[self.ifront]
 
@@ -69,7 +86,11 @@ class Linked_queue:
     def swap(self, Linked_queue):
         pass
 
-    # push the argument to the end of the queue and increment the size of the queue - not tested
+    # push the argument to the end of the queue and increment the size of the queue
+
+    #############     TESTING COMMENTS    ##################
+    # Tested on 7/4/2020 seems to be working properly, but not entirely sure as I am unable to
+    # pop anything. -D Hatcher
 
     # Here is the process described from the instructions:
     # If the queue is empty, allocate memory for a new array with the required capacity, push the address of that array onto the linked list, set both indices to zero and place the new argument at that location. The size of the queue is now one.
@@ -139,16 +160,18 @@ class List_Node:
         self.next = None
 
 # just some simple testing for the push function and front function
-myQueue = Linked_queue()
+#############     TESTING COMMENTS    ##################
+# Commented to start working on testing current implementations 7/4/2020 D.Hatcher
+# myQueue = Linked_queue()
 
-myQueue.push(1)
-myQueue.push(2)
-myQueue.push(3)
-myQueue.push(4)
-myQueue.push(5)
-myQueue.push(6)
-myQueue.push(7)
-myQueue.push(8)
-myQueue.push(9)
-myQueue.printList()
-print(myQueue.front())
+# myQueue.push(1)
+# myQueue.push(2)
+# myQueue.push(3)
+# myQueue.push(4)
+# myQueue.push(5)
+# myQueue.push(6)
+# myQueue.push(7)
+# myQueue.push(8)
+# myQueue.push(9)
+# myQueue.printList()
+# print(myQueue.front())
