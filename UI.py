@@ -16,8 +16,37 @@ def printCommands():
 def processCommand(command):
     global queue
     if(command == 'a'):
-        add_value = input("Enter an item to be added to the queue: ")
-        if(add_value.strip() != ''):
-            queue.push(add_value)
-            print("")
-        else:
+        addItem()
+    else:
+        pass
+
+
+def addItem():
+    global queue
+    add_value = input("Enter an item to be added to the queue: ")
+    if(add_value.strip() != ''):
+        queue.push(add_value)
+        print(add_value,"has been added to the queue!")
+    else:
+        print("ERROR: No item in input!")
+
+def printFirstItem():
+    global queue
+    if(queue.size() > 0):
+        first = queue.front()
+        print("The item in the front of the queue is",first)
+    else:
+        print("ERROR: The queue is empty!")
+
+def deleteFirst():
+    global queue
+    if(queue.size > 0):
+        delete = queue.pop()
+        print(delete,"has been deleted from the queue!")
+    else:
+        print("ERROR: The queue is empty!")
+
+
+def printSize():
+    global queue
+    print("There are",queue.size(),"items in the queue")
