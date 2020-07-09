@@ -1,4 +1,6 @@
 import math
+import copy
+
 # linked queue object based on project instructions
 class Linked_queue:
     def __init__(self):
@@ -8,12 +10,25 @@ class Linked_queue:
         # the queue size (the number of elements in the queue, not the number of linked list nodes)
         self.size = 0
 
-    # copy constructor and destructors don't exist in python
+    # Destructor deletes all the elements in the Linked Queue then deletes Linked Queue object
+    def __del__(self):
+        
+        current = self.linkedList
+        while current != None:
+            for element in current.list:
+                del element
+            current = current.next
+        del self
 
-    # returns true if the queue is empty, or false if it is not
+    # Copy constructor will copy all data from LLQ to another
+    # Usage: copyQueue = Linked_queue.copy()
+    def copy(self):
+        return copy.deepcopy(self)
 
+    # Returns True if the queue is empty, or False if it is not
     #############     TESTING COMMENTS    ##################
-    # Tested on 7/4/2020 working properly. - D Hatcher
+    # Tested on 7/4/2020 working properly. - D Hatcher     #
+    ########################################################
     def empty(self):
         if self.size == 0:
             return True
@@ -48,12 +63,14 @@ class Linked_queue:
     def front(self):
         return self.linkedList.list[self.ifront]
 
-    # swaps all of the member variables with the list in the argument - not completed
-    def swap(self, Linked_queue):
-        pass
+    # Swaps all of the member variables with the list in the argument - Work in Progress
+    def swap(self, other):
+
+        temp = self.copy()
+        self = other.copy()
+        other = temp.copy()
 
     # push the argument to the end of the queue and increment the size of the queue
-
     #############     TESTING COMMENTS    ##################
     # Tested on 7/4/2020 seems to be working properly, but not entirely sure as I am unable to
     # pop anything. -D Hatcher
