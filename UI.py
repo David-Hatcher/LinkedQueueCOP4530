@@ -1,6 +1,7 @@
 from Linked_queue import Linked_queue
 
 queue = Linked_queue()
+prog_running = True
 
 def printTitle():
     print('\t\tWelcome To The Queue',end = '\n\n')
@@ -14,11 +15,19 @@ def printCommands():
     print("\t\tEnter 'e' to exit the queue")
 
 def processCommand(command):
-    global queue
+    global queue,prog_running
     if(command == 'a'):
         addItem()
+    elif(command == 'p'):
+        printFirstItem()
+    elif(command == 'd'):
+        deleteFirst()
+    elif(command == 's'):
+        printSize()
+    elif(command == 'e'):
+        prog_running = False
     else:
-        pass
+        print("I do not understand please see the available commands.")
 
 
 def addItem():
@@ -32,7 +41,7 @@ def addItem():
 
 def printFirstItem():
     global queue
-    if(queue.size() > 0):
+    if(queue.getSize() > 0):
         first = queue.front()
         print("The item in the front of the queue is",first)
     else:
@@ -40,7 +49,7 @@ def printFirstItem():
 
 def deleteFirst():
     global queue
-    if(queue.size > 0):
+    if(queue.getSize() > 0):
         delete = queue.pop()
         print(delete,"has been deleted from the queue!")
     else:
@@ -49,4 +58,9 @@ def deleteFirst():
 
 def printSize():
     global queue
-    print("There are",queue.size(),"items in the queue")
+    print("There are",queue.getSize(),"items in the queue")
+
+
+while(prog_running):
+    printCommands()
+    processCommand(input("Enter a command:"))
