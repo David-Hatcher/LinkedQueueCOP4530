@@ -1,5 +1,4 @@
 import math
-import copy
 
 # linked queue object based on project instructions
 class Linked_queue:
@@ -23,7 +22,21 @@ class Linked_queue:
     # Copy constructor will copy all data from LLQ to another
     # Usage: copyQueue = Linked_queue.copy()
     def copy(self):
-        return copy.deepcopy(self)
+
+        current = self.linkedList
+        temp = Linked_queue()
+
+        if current.next != None:
+            for element in current.list:
+                temp.push(element)
+            current = current.next
+
+        while current != None:
+            for element in current.list:
+                if element != None:     
+                    temp.push(element)
+            current = current.next
+        return temp
 
     # Returns True if the queue is empty, or False if it is not
     #############     TESTING COMMENTS    ##################
