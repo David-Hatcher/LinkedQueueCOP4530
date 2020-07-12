@@ -22,28 +22,28 @@ def randomString(length):
     return string
 
 # Determines the outcome of a test
-def testResults(testTitle,recieved,expected):
+def testResults(testTitle,received,expected):
     print(testTitle)
-    print("Expected: ",expected,"Recieved: ",recieved)
-    if(recieved == expected):
+    print("Expected: ",expected,"Received: ",received)
+    if(received == expected):
         print(testPassedString)
         return True
     else:
         print(testFailedString)
         return False
 
-def testResultsArrays(testTitle,recieved,expected):
+def testResultsArrays(testTitle,received,expected):
     print(testTitle)
-    print("Length of Expected: ",len(expected),"Length of Recieved: ",len(recieved))
+    print("Length of Expected: ",len(expected),"Length of Received: ",len(received))
     same = True
-    if(len(recieved) == len(expected)):
-        for i in range(0,len(recieved)):
-            if(recieved[i] != expected[i]):
+    if(len(received) == len(expected)):
+        for i in range(0,len(expected)):
+            if(received[i] != expected[i]):
                 same = False
                 break
     else:
         same = False
-    if(same):
+    if(same == True):
         print(testPassedString)
         return True
     else:
@@ -55,18 +55,18 @@ def testFront(array):
     queue = Linked_queue()
     for value in array:
         queue.push(value)
-    recieved = queue.front()
+    received = queue.front()
     expected = array[0]
-    return testResults("Front Test",recieved,expected)
+    return testResults("Front Test",received,expected)
 
 # Tests the size function of the Linked_queue class
 def testSize(array):
     queue = Linked_queue()
     for value in array:
         queue.push(value)
-    recieved = queue.getSize()
+    received = queue.getSize()
     expected = len(array)
-    return testResults("Size Test: ",recieved,expected)
+    return testResults("Size Test: ",received,expected)
 
 # Tests the empty function of the Linked_queue
 def testEmpty(array):
@@ -77,8 +77,8 @@ def testEmpty(array):
         expected = False
     else:
         expected = True
-    recieved = queue.empty()
-    return testResults("Empty Test",recieved,expected)
+    received = queue.empty()
+    return testResults("Empty Test",received,expected)
 
 # Tests the list_size function of the Linked_queue this must take a second variable for the
 # expected number of nodes
@@ -86,8 +86,8 @@ def testListSize(array,expected):
     queue = Linked_queue()
     for value in array:
         queue.push(value)
-    recieved = queue.list_size()
-    return testResults("List Size",recieved,expected)
+    received = queue.list_size()
+    return testResults("List Size",received,expected)
 
 def testPop(array):
     queue = Linked_queue()
@@ -109,10 +109,10 @@ def testPopEmpty(array):
     expected = False
     try:
         queue.pop()
-        recieved = True
+        received = True
     except:
-        recieved = False
-    return testResults("Empty Pop Test",recieved,expected)
+        received = False
+    return testResults("Empty Pop Test",received,expected)
 
 def testCopy(array):
     queueA = Linked_queue()
@@ -136,12 +136,12 @@ def testDecon(array):
     expected = False
     try:
         print(queue)
-        recieved = True
+        received = True
     except:
-        recieved = False
-    testResults("Deconstructor Test",recieved,expected)
+        received = False
+    testResults("Deconstructor Test",received,expected)
 
-def pushAndPop(array):
+def testPushAndPop(array):
     queue = Linked_queue()
     for value in array:
         queue.push(value)
@@ -149,8 +149,19 @@ def pushAndPop(array):
     expected = len(array) - rand
     for _ in range(0,rand):
         queue.pop()
-    recieved = queue.getSize()
-    testResults("Push and Pop test",recieved,expected)
+    received = queue.getSize()
+    testResults("Push and Pop test",received,expected)
+
+def testPopAndPushOrdered():
+    queue = Linked_queue()
+    arr = []
+    queue.push(1)
+    queue.push(2)
+    arr.append(queue.pop())
+    queue.push(4)
+    arr.append(queue.pop())
+    arr.append(queue.pop())
+    return testResultsArrays("Ordered Push and Pop Test",arr,[1,2,4])
 
 #Ints [1,1000] size 5
 testArray_A = [random.randint(1,1000) for _ in range(5)]
@@ -199,9 +210,10 @@ testDecon(testArray_A)
 testDecon(testArray_B)
 testDecon(testArray_C)
 testDecon(testArray_G)
-pushAndPop(testArray_C)
-pushAndPop(testArray_B)
-pushAndPop(testArray_A)
+testPushAndPop(testArray_C)
+testPushAndPop(testArray_B)
+testPushAndPop(testArray_A)
 testCopy(testArray_A)
 testCopy(testArray_B)
 testCopy(testArray_C)
+testPopAndPushOrdered()
