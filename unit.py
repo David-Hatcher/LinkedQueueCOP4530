@@ -163,6 +163,21 @@ def testPopAndPushOrdered():
     arr.append(queue.pop())
     return testResultsArrays("Ordered Push and Pop Test",arr,[1,2,4])
 
+def testSwap(array):
+    queueA = Linked_queue()
+    queueB = Linked_queue()
+    arr = []
+    for item in array:
+        queueA.push(item)
+    queueB.swap(queueA)
+    while(True):
+        try:
+            arr.append(queueB.pop())
+        except:
+            break
+    return testResultsArrays("Swap Test",arr,array)
+            
+
 #Ints [1,1000] size 5
 testArray_A = [random.randint(1,1000) for _ in range(5)]
 
@@ -217,10 +232,6 @@ testCopy(testArray_A)
 testCopy(testArray_B)
 testCopy(testArray_C)
 testPopAndPushOrdered()
-
-queue = Linked_queue()
-queue.push(0)
-que = Linked_queue()
-que.push(1)
-queue.swap(que)
-print(queue.pop())
+testSwap(testArray_A)
+testSwap(testArray_B)
+testSwap(testArray_C)
