@@ -78,58 +78,24 @@ class Linked_queue:
 
     # Swaps all of the member variables with the list in the argument
     def swap(self, other):
+        arr = []
+        while(True):
+            try:
+                arr.append(self.pop())
+            except:
+                break
+        while(True):
+            try:
+                self.push(other.pop())
+            except:
+                break
+        self.ifront = 0
+        for item in arr:
+            other.push(item)
+        other.ifront = 0
+        pass
 
-        current = self.linkedList
-        temp = Linked_queue()
-
-        if current.next != None:
-            for element in current.list:
-                temp.push(element)
-                self.pop()
-                
-            current = current.next
-
-        while current != None:
-            for element in current.list:
-                if element != None:     
-                    temp.push(element)
-                    self.pop()
-                    
-            current = current.next
-
-
-        current = other.linkedList
-
-        if current.next != None:
-            for element in current.list:
-                self.push(element)
-                other.pop()
-            current = current.next
-
-        while current != None:
-            for element in current.list:
-                if element != None:     
-                    self.push(element)
-                    other.pop()
-            current = current.next
-
-        current = temp.linkedList
-
-        if current.next != None:
-            for element in current.list:
-                other.push(element)
-                temp.pop()
-            current = current.next
-
-        while current != None:
-            for element in current.list:
-                if element != None:     
-                    other.push(element)
-                    temp.pop()
-            current = current.next
         
-        return
-
 
     # push the argument to the end of the queue and increment the size of the queue
     #############     TESTING COMMENTS    ##################
